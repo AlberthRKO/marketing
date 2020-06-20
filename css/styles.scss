@@ -1,0 +1,333 @@
+//*******************************
+// Patrones de colores
+//*******************************
+
+$principal: #337ab7;
+$texto: #696969;
+
+/* -----------------------------------
+1. Tipografia del sitio
+------------------------------------*/
+
+html{
+    font-size: 13px;
+    
+}
+body{
+    font-family: 'Rubik', sans-serif;
+    color:$texto;
+    height: 1000px;
+}
+
+
+// color de texto y fondo principal
+.bg-primary{
+    background-color: $principal !important;
+}
+.text-primary{
+    color: $principal !important;
+}
+
+/* -----------------------------------
+2. estilos para el boton principla de la pagina
+------------------------------------*/
+
+.btn{
+    border-radius: 3rem;
+    // asemos que el elemento se comporte en linea y a la vez es un padre flexible
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem 2rem;
+}
+.btn:hover{
+    box-shadow: 0 6px 10px rgba(0,0,0,.3);
+}
+.btn::after{
+    font-family: 'Font Awesome 5 Pro';
+    content: "\f0a9";
+    font-weight: 900;
+    position: relative; //lo ponemos en relativo para poder movelo con left
+    left: .5rem;
+    transition: all .5s ease;
+}
+.btn:hover:after{
+    transform: rotate(360deg);
+    left: 1rem;
+}
+/* -----------------------------------
+estilos para el boton principal primary
+------------------------------------*/
+.btn-primary{
+    background-color: $principal;
+    border-color: darken($principal, $amount: 10%);
+}
+.btn-primary:hover,
+.btn-primary:focus{ 
+    background-color: darken($principal, $amount: 10%);
+}
+.btn-primary:active{
+    background-color: darken($principal, $amount: 20%) !important;
+    border-color: darken($principal, $amount: 30%) !important;
+}
+.btn-primary:focus{
+    // el cuarto valor hace referencia a la fuerza del borde
+    box-shadow: 0 0 0 .2rem rgba($principal, $alpha: .5) !important;
+}
+
+
+
+
+
+
+/* -----------------------------------
+3. Seccion de barra de navegacion
+------------------------------------*/
+.btn-buscar{
+    padding: .58rem 1rem;
+    font-size: 1.25rem;
+    line-height: 1;
+    background-color: transparent;
+    border: 1px solid transparent;
+    border-radius: .25rem;
+    color: rgba(0,0,0,.5);
+    border-color: rgba(0,0,0,.1);
+    cursor: pointer;
+
+}
+
+.fa-search:focus{
+    outline: 0 !important;
+}
+.navbar-toggler-icon:focus{
+    outline: 0 !important;
+}
+/* -----------------------------------
+4. estilos dropdown
+------------------------------------*/
+
+.dropdown-menu a i{
+    font-size: .85rem;
+    margin-right: .5rem;
+    text-align: center;
+    width: 1.25em;
+}
+
+.dropdown-menu{
+    border: 1px solid $principal;
+    border-top-width: 5px;
+    box-shadow: 0 5px 12px rgba(0,0,0,.25);
+}
+
+/* -----------------------------------
+5. estilos para Ventana  modal buscador
+------------------------------------*/
+#buscador-modal{
+    // hacemos que la seccion sea fija
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: auto;
+    z-index: 100;
+    background: rgba($color: black, $alpha: .6);
+    display: none;
+}
+.btn-cerrar{
+    position: absolute;
+    top: 2rem;
+    right: 1rem;
+    transition: all .5s ease;
+}
+.btn-cerrar:hover{
+    color: rgba($color: black, $alpha: .6) !important;
+}
+#nombre{
+    height: auto;
+    // esSupIzq SupDer infDer infIzq
+    border-radius: 3rem 0 0 3rem;
+    font-size: 1.2rem;
+    padding: 1rem 1.5rem;
+}
+#buscar::after{
+    content: "";
+}
+#buscar{
+    border-radius: 0 3rem 3rem 0; 
+    font-size: 1.2rem;
+}
+
+
+/* -----------------------------------
+6. estilos Bienvenidos
+------------------------------------*/
+// Estilos presentacion
+#presentacion{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+// header para los demas encabezados de la pagina
+header{
+    flex-direction: column;
+}
+
+.bienvenidos{
+    // flex-grow parecida a margin auto asignadole 1 el hijo ocupa todo el espacio sobrante
+    background: url('../img/fondo-bienvenidos.png') no-repeat center center / cover;
+    position: relative;
+    flex-grow: 1; //absorve para el todo el resto del header
+}
+// oscurecemos la imagen con before
+.bienvenidos::before{
+    content: "";
+    background-color: rgba($color: black, $alpha: .5);
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+}
+.bienvenidos .btn{
+    width: 70%;
+    text-transform: uppercase;
+}
+// ESTILOS PARA INTERNET EXPLORER 11
+@media all and (-ms-high-contrast:none), (-ms-high-contrast:active){
+    body{
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+/* -----------------------------------
+6. estilos separador-titulos
+------------------------------------*/
+.separador-titulos{
+    
+	margin-top: 2rem;
+	height: 4px;
+	width: 80px;
+	background: $principal;
+}
+
+/* -----------------------------------
+7. estilos Proyectos #proyectos
+------------------------------------*/
+.proyecto{
+    display: block;
+    position: relative;
+    overflow: hidden; //para que la imagen no se salga
+    margin-bottom: 2rem;
+}
+.proyecto .mascara{
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(6, 5, 34, 0.78);
+    padding: 1.5rem;
+    // ubicamos el contenido de la mascara en el centro de la imagen
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    // no se muestre la mascara
+    opacity: 0;
+    transition: all .5s ease;
+    z-index: 10; //para que se ponfa por delante de todo
+}
+
+// movemos para que venga de caida en el hover
+.proyecto .mascara h3,
+.proyecto .mascara p{
+    position: relative;
+    top: -3rem; //lo subimos para arriba
+    transition: all .3s ease;
+    width: 100%; //agreamos eso para internet explorer para que los hijos hagan salto de linea
+}
+.proyecto .mascara .btn{
+    position: relative;
+    top: 3rem;
+    transition: all .3s ease;
+}
+// estilos a la imagen
+.proyecto img{
+    width: 100&;
+    transition: all .3s ease;
+}
+
+
+// estado hover de cada proyecto
+.proyecto .mascara:hover{
+    opacity: 1;
+}
+.proyecto:hover .mascara h3,
+.proyecto:hover .mascara p,
+.proyecto:hover .mascara .btn{
+    top: 0; //asemos que vuelva a su estado original
+}
+.proyecto:hover img{
+    transform: scale(1.3); //aumentamos el tamaño
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/***************************************
+X  Show de medias querys
+***************************************/
+@media (min-width: 768px){
+    .btn-buscar{
+        border-color: transparent;
+        padding: 0;
+        font-size: 1.4rem;
+    }
+    .btn-buscar:focus{
+        outline: 0 !important;
+    }
+    // estilo del mega-menu
+    .navbar .container {
+        position: relative;
+    }
+    .mega-menu{
+        position: static; //que se mantenga en su misma posicion
+    }
+    .mega-menu .dropdown-menu{
+        position: absolute;
+        width: 100%;
+        left: 0;
+        top: auto;
+    }
+    // estilo de bienvenidos
+    .bienvenidos{
+        background: url('../img/fondo-bienvenidos-md.jpg') no-repeat center center / cover;
+    }
+    .bienvenidos .btn{
+        width: auto;
+        font-size: 1.3rem;
+    }
+}
+@media (min-width: 990px){
+    html{
+        font-size: 16px;
+    }
+    html #proyectos{
+        font-size: 13px;
+    }
+}
